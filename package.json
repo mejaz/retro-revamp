@@ -10,10 +10,14 @@
   },
   "dependencies": {
     "autoprefixer": "10.4.14",
+    "aws-sdk": "^2.1393.0",
+    "file-saver": "^2.0.5",
+    "formidable-serverless": "^1.1.1",
     "next": "13.4.4",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.1",
     "tailwindcss": "3.3.2"
   }
 }
