@@ -8,7 +8,7 @@ Rediscover the Past, Sharpen Your Memories!
 
 Revive faded memories. This web app restores faces from old blurry images, preserving authenticity and reviving hidden details.
 
-This project uses the GFPGAN AI model hosted at replicate.com to restore faces from blurry / old images. 
+This project uses the GFPGAN AI model to restore faces from blurry / old images. 
 
 ## Pre-requisites to run this project
 
