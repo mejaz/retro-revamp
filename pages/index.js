@@ -89,7 +89,7 @@ export default function Home() {
 							/>
 						</div>
 						<div
-							className={'flex justify-center flex-wrap mt-3 gap-2 w-full border-0 lg:border min-h-[300px] bg-white lg:p-5'}>
+							className={'flex justify-between lg:justify-center flex-wrap mt-3 gap-2 w-full min-h-[300px] lg:p-5'}>
 							{
 								originalImage
 									? <ImageBox

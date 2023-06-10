@@ -71,7 +71,6 @@ export default async function handler(req, res) {
 
 				// 3. upload the file to aws s3
 				let data = await s3Upload(process.env.S3_BUCKET, file)
-				console.log('--location--', data.Location)
 
 				// 4. create prediction
 				const prediction = await createPrediction(data.Location)
@@ -86,8 +85,6 @@ export default async function handler(req, res) {
 	} else if (req.method === 'GET') {
 		try {
 			const {id} = req.query
-			console.log(id)
-
 			const prediction = await getPrediction(id)
 			return res.json({prediction})
 		} catch (e) {
