@@ -44,6 +44,7 @@ export default function FileUpload({setOriginalImage, uploading, setUploading, s
 			setPredictId(response.id)
 		} else {
 			response = await response.json()
+			setUploading(false)
 			toast.error(response.message)
 		}
 	};

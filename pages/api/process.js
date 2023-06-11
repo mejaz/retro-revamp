@@ -28,8 +28,9 @@ const createPrediction = async (url) => {
 	if (response.ok) {
 		return await response.json()
 	} else {
+		response = await response.json()
 		console.log(response)
-		throw new Error('Error processing image')
+		throw new Error(response.detail)
 	}
 }
 
@@ -47,17 +48,18 @@ const getPrediction = async (id) => {
 	} else {
 		response = await response.json()
 		console.log(response)
-		throw new Error('Error processing image')
+		throw new Error(response.detail)
 	}
 }
 
 export default async function handler(req, res) {
 	// 1. if POST call
 	if (req.method === 'POST') {
-		try {
-			// 2. parse the incoming form data
-			let form = new formidable.IncomingForm()
-			form.parse(req, async (error, fields, files) => {
+		// 2. parse the incoming form data
+		let form = new formidable.IncomingForm()
+
+		form.parse(req, async (error, fields, files) => {
+			try {
 				if (error) {
 					console.log('failed to parse form data')
 					return res.status(500).json({message: 'failed to parse form data'})
@@ -77,11 +79,11 @@ export default async function handler(req, res) {
 
 				// 4. return the response
 				return res.status(200).json({status: prediction.status, id: prediction.id})
-			})
-		} catch (e) {
-			console.log('--error--', e)
-			return res.status(500).json({message: e.message})
-		}
+			} catch (e) {
+				console.log('--error--', e)
+				return res.status(500).json({message: e.message})
+			}
+		})
 	} else if (req.method === 'GET') {
 		try {
 			const {id} = req.query
